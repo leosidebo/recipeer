@@ -6,7 +6,12 @@ const Chef = require('../models/chef')
  * All Chefs Route
  */
 router.get('/', async (req, res) => {
-    res.send('All Chefs')
+    try {
+        const chefs = await Chef.find()
+        res.render('chefs', { chefs: chefs })
+    } catch {
+        res.redirect('/')
+    }
 })
 
 /** 
