@@ -41,7 +41,7 @@ async function getRole(req, res, next) {
         return res.status(500).json({ message: error.message })
     }
 
-    res.role()
+    res.role = role
     next()
 }
 

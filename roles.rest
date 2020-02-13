@@ -1,0 +1,71 @@
+POST http://localhost:4000/roles
+Content-Type: application/json
+
+{
+    "name": "Executive Chef",
+    "description": "The Executive chef sits at the top of the kitchen hierarchy; their role is primarily managerial. Executive chefs tend to manage kitchens at multiple outlets and are not usually directly responsible for cooking.",
+    "salaryPerMonth": "50000"
+}
+
+###
+
+POST http://localhost:4000/roles
+Content-Type: application/json
+
+{
+    "name": "Chef de Cuisine (Head Chef)",
+    "description": "‘Head Chef’ is the translation for the French term ‘Chef de Cuisine’. The Head Chef will typically focus on managerial duties relating to the whole kitchen. For example, they supervise and manage staff, control costs and make purchases, and liaise with the restaurant manager and suppliers to create new menus.",
+    "salaryPerMonth": "45000"
+}
+
+###
+
+POST http://localhost:4000/roles
+Content-Type: application/json
+
+{
+    "name": "Sous Chef (Deputy Chef)",
+    "description": "The sous chef shares a lot of the same responsibilities as the head chef, however they are much more involved in the day-to-day operations in the kitchen. The sous chef also fills in for the head chef when they are not present.",
+    "salaryPerMonth": "40000"
+}
+
+###
+
+POST http://localhost:4000/roles
+Content-Type: application/json
+
+{
+    "name": "Chef de Partie (Station Chef)",
+    "description": "This role is a vital part of the brigade system, but it’s split into many different roles. There is more than one chef de partie and each one is responsible for a different section of the kitchen. This makes kitchen operations much more productive and helps to coordinate large quantities of meals at busy times.",
+    "salaryPerMonth": "35000"
+}
+
+###
+
+POST http://localhost:4000/roles
+Content-Type: application/json
+
+{
+    "name": "Commis Chef (Junior Chef)",
+    "description": "The commis chef works under the chef de partie to learn the ins and outs of a specific station. The junior chef has usually recently completed, or is still partaking in, formal training.",
+    "salaryPerMonth": "30000"
+}
+
+###
+
+POST http://localhost:4000/roles
+Content-Type: application/json
+
+{
+    "name": "Kitchen Porter",
+    "description": "Kitchen porters assist with basic tasks in the kitchen, and are less likely to have had formal training. Their role typically involves introductory food preparation, such as peeling potatoes, and some cleaning duties.",
+    "salaryPerMonth": "25000"
+}
+
+###
+
+GET http://localhost:4000/roles/5e454c5373871a43e8683f8d
+
+###
+
+GET http://localhost:4000/roles
