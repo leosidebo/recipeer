@@ -1,0 +1,45 @@
+POST http://localhost:4000/shifts
+Content-Type: application/json
+
+{
+    "name": "Day",
+    "payBoost": "1"
+}
+
+###
+
+POST http://localhost:4000/shifts
+Content-Type: application/json
+
+{
+    "name": "Swing",
+    "payBoost": "1.25"
+}
+
+###
+
+POST http://localhost:4000/shifts
+Content-Type: application/json
+
+{
+    "name": "Night",
+    "payBoost": "1.5"
+}
+
+###
+
+POST http://localhost:4000/shifts
+Content-Type: application/json
+
+{
+    "name": "Split",
+    "payBoost": "1.25"
+}
+
+###
+
+GET http://localhost:4000/shifts
+
+###
+
+GET http://localhost:4000/shifts/5e455b1b2329fd532497db2d
