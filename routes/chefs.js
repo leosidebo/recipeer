@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const Chef = require('../models/chef')
+const Role = require('../models/role')
+const Shift = require('../models/shift')
 
 /** 
  * All Chefs Route
@@ -18,21 +20,26 @@ router.get('/', async (req, res) => {
  * New Chef Route
  */
 router.get('/new', async (req, res) => {
-    res.render('chefs/new', { chef: new Chef() })
+    try {
+        const roles = await Role.find()
+        const shifts = await Shift.find()
+        res.render('chefs/new', { chef: new Chef(), roles: roles, shifts: shifts })
+    } catch {
+        res.redirect('/')
+    }
 })
 
 /** 
  * Create Chef Route
  */
 router.post('/', async (req, res) => {
-    let professional = true
-    if (req.body.professional != true) {
-        professional = false
-    }
 
     const chef = new Chef({
         name: req.body.name,
-        professional: professional
+        role: req.body.role,
+        hoursPerWeek: req.body.hoursPerWeek,
+        shift: req.body.shift,
+        yearsWorked: req.body.yearsWorked
     })
 
     try {
@@ -45,5 +52,6 @@ router.post('/', async (req, res) => {
         })
     }
 })
+
 
 module.exports = router
