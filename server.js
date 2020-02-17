@@ -10,6 +10,8 @@ const expressLayouts = require('express-ejs-layouts')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
+const PORT = process.env.PORT || 4000
+
 const indexRouter = require('./routes/index')
 const chefRouter = require('./routes/chefs')
 const roleRouter = require('./routes/roles')
@@ -28,13 +30,22 @@ app.use('/chefs', chefRouter)
 app.use('/roles', roleRouter)
 app.use('/shifts', shiftRouter)
 
-connect()
-
-function connect() {
-    mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
+connect().then(() => {
     const db = mongoose.connection
     db.on('error', error => console.log(error))
-    db.once('open', () => console.log('Connected to Mongoose'))
+    db.once('open', () => console.log('Connected to Mongoose')) 
+    app.listen(PORT, () => {
+      console.log('Listening on port: ' + PORT);
+    });
+  });
+
+function connect() {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true }).then((res, err) => {
+            if(err) return reject(err)
+            resolve()
+        })
+    })
 }
 
 function disconnect() {
@@ -42,3 +53,5 @@ function disconnect() {
 }
 
 app.listen(4000)
+
+module.exports = { connect, disconnect }
